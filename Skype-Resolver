@@ -1,0 +1,47 @@
+#!/usr/bin/env python
+#-*- coding:utf-8 -*-  
+
+##############################################################################################
+#      [+] NAME:         Murilo Souza                                                        #
+#      [+] EMAIL:        murilosouza.pkk@hotmail.com                                         #
+#      [+] GITHUB:       https://github.com/MurilloSouza                                     #
+#      [+] FACEBOOK:     https://fb.com/Arc4nj0                                              #
+#      [+] Twitter:      @k3nshi_                                                            #
+#      [+] Nick :        Arc4nj0 ou Mr.S0tr1x                                                #
+#      [+] Thanks:    Brian Lucas - Heitor Gouva - Pedro Souza - Franco colombiano           #
+#      [+] PASTEBIN:    http://pastebin.com/u/MuriloSouza                                    #
+##############################################################################################
+
+
+import urllib, os, re
+os.system("clear")
+
+print """\033[1;24m 
+              _                                    
+      _\ ____) \____________________________________________________     
+     (_)[___]{}<______________________Arc4nj0_______________________\    
+       /     )_/          
+        \033[1;33mCopyright (c) Arc4nj0\033[0m                           
+                          \033[0m 
+    """ 
+print "\033[0;37m+"*125+"\n\033[0m"
+
+user = raw_input("\033[35mSkype user: \033[0m")
+api = "http://apionly.com/skype.php?username="+user
+new = urllib.urlopen(api).read()
+geoip = "http://www.localizarip.com.br/localizar-ip.php?ip="+new
+port = "http://api.predator.wtf/pscan/?arguments="+new 
+scan = urllib.urlopen(port).read()
+
+print "\033[0;34mIP\033[0m:"+new
+
+print "\033[0;32m\t\t\t\t\nPorts...\033[0m"
+print "\033[0;34mResultado:\n\033[0m"+scan
+
+dados = urllib.urlopen(geoip).read()
+pais,estado, cidade, provedor = re.findall('Pa&iacute;s:<b>(.*?)</b><br>', dados) ,re.findall('Estado:<b>(.*?)</b><br>', dados), re.findall('Cidade:<b>(.*?)</b><br>', dados), re.findall('Provedor:<b>(.*?)</b><br>', dados) 
+print "\033[0;32m\t\t\t\t\nDados...\033[0m"
+for i in pais: print "\033[35m\tPaís: "+i+"\033[0m"
+for i in estado: print "\033[35m\tEstado: "+i+"\033[0m"
+for i in cidade: print "\033[35m\tCidade: "+i+"\033[0m"
+for i in provedor: print "\033[35m\tProvedor: "+i+"\033[0m"
